@@ -20,24 +20,16 @@ const CountersList = () => {
   };
 
   const handleIncrement = (id) => {
-    const updateIncCounters = counters.map((c) => {
-      return {
-        id: c.id,
-        value: id === c.id ? (c.value += 1) : c.value,
-        name: c.name,
-      };
-    });
-    setCounters(updateIncCounters);
+    const elementIndex = counters.findIndex((c) => c.id === id);
+    const newCounters = [...counters];
+    newCounters[elementIndex].value++;
+    setCounters(newCounters);
   };
   const handleDecrement = (id) => {
-    const updateDecCounters = counters.map((c) => {
-      return {
-        id: c.id,
-        value: id === c.id ? (c.value -= 1) : c.value,
-        name: c.name,
-      };
-    });
-    setCounters(updateDecCounters);
+    const elementIndex = counters.findIndex((c) => c.id === id);
+    const newCounters = [...counters];
+    newCounters[elementIndex].value--;
+    setCounters(newCounters);
   };
   return (
     <>
